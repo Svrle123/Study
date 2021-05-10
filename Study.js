@@ -49,6 +49,7 @@ console.log("6. \n", halve(100));
 
 console.log("7. \n", n);
 
+/*Here we are calling a function within a function, the function we are calling we made inside the parent function before we called it*/
 const hummus = function (factor) {
   const ingredient = function (amount, unit, name) {
     let ingredientAmount = amount * factor;
@@ -67,3 +68,120 @@ const hummus = function (factor) {
 };
 
 hummus(2);
+
+/*We can write functions after a piece of code that calls the function, functions ignore the top to bottom flow of control*/
+console.log("The future says:", future());
+
+function future() {
+  return "You'll never have flying cars";
+}
+/*Different way of writing functions*/
+const power1 = (base, exponent) => {
+  let result = 1;
+  for (let count = 0; count < exponent; count++) {
+    result *= base;
+  }
+  return result;
+};
+
+const square1 = (x) => {
+  return x * x;
+};
+const square2 = (x) => x * x;
+//Function that doesn't take in any parameters
+const horn = () => {
+  console.log("Toot");
+};
+// Looking at flow of control greet function takes us to line 97 finishes goes back to the greet function and then console.log("Bye") returns and the program ends
+/*
+not in function
+   in greet
+        in console.log
+   in greet
+not in function
+   in console.log
+not in function
+*/
+function greet(who) {
+  console.log("Hello " + who);
+}
+greet("Harry");
+console.log("Bye");
+/*Here we created a infinite loop , as the computer memory runs out of space it gives us a error "Maximum call stack size exceeded"*/
+/* 
+function chicken() {
+  return egg();
+}
+function egg() {
+  return chicken();
+}
+console.log(chicken() + " came first.");  
+*/
+
+//Here we made the second parameter equal to 2 if no parameter is given
+function power2(base, exponent = 2) {
+  let result = 1;
+  for (let count = 0; count < exponent; count++) {
+    result *= base;
+  }
+  return result;
+}
+console.log(power2(4));
+
+console.log(power2(2, 6));
+
+//Recursive function is a function that calls itself
+function findSolution(target) {
+  function find(current, history) {
+    if (current == target) {
+      return history;
+    } else if (current > target) {
+      return null;
+    } else {
+      return (
+        find(current + 5, `(${history} + 5)`) ||
+        find(current * 3, `(${history} * 3)`)
+      );
+    }
+  }
+  return find(1, "1");
+}
+console.log(findSolution(18));
+
+//Exercises
+
+//1
+function min(x, y) {
+  if (x > y) {
+    return y;
+  } else return x;
+}
+console.log(min(0, 10));
+console.log(min(0, -10));
+//2
+function isEven(n) {
+  if (n == 0) return true;
+  else if (n == 1) return false;
+  else if (n < 0) return isEven(-n);
+  else return isEven(n - 2);
+}
+
+console.log(isEven(23));
+//3
+function countBs(string) {
+  return countChar(string, "B");
+}
+
+console.log(countBs("BBCB"));
+
+function countChar(string, letter) {
+  let numberOfLetters = 0;
+  for (let count = 0; count < string.length; count++) {
+    if (string[count] == letter) {
+      numberOfLetters += 1;
+    }
+  }
+  return numberOfLetters;
+}
+
+console.log(countChar("kakkerlak", "k"));
