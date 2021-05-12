@@ -185,3 +185,52 @@ function countChar(string, letter) {
 }
 
 console.log(countChar("kakkerlak", "k"));
+
+//Making objects, adding a new property to the object, adding a new value to a existing property in the object
+let day1 = {
+  squirrel: false,
+  events: ["work", "touched tree", "pizza", "running"],
+};
+console.log(day1.wolf);
+day1.wolf = false;
+console.log(day1.wolf);
+day1.events.push("money");
+console.log(day1.events);
+
+//Deleting a property from a object with the delete operator and checking for "left" in the object with the in Operator
+let anObject = { left: 1, right: 2 };
+console.log(anObject.left);
+delete anObject.left;
+console.log(anObject.left);
+console.log("left" in anObject);
+
+//Returning the names of the properties within a object
+console.log(Object.keys({ x: 0, y: 0, z: 2 }));
+//Returns ["x","y","z"]
+//Object.assign copies all properties from one object to another
+let objectA = { a: 1, b: 2 };
+Object.assign(objectA, { b: 3, c: 4 });
+console.log(objectA);
+//{a:1 , b: 3, c:4}
+
+let journal = [
+  {
+    events: ["work", "touched tree", "pizza", "running", "television"],
+    squirrel: false,
+  },
+  {
+    events: [
+      "work",
+      "ice cream",
+      "cauliflower",
+      "lasagna",
+      "brushed teeth",
+      "touched tree",
+    ],
+    squirrel: false,
+  },
+  {
+    events: ["weekend", "cycling", "break", "peanuts", "beer"],
+    squirrel: true,
+  },
+];
