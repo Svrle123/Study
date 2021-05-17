@@ -547,7 +547,7 @@ for (let entry of JOURNAL) {
   }
 }
 console.log(phi(tableFor("peanut teeth", JOURNAL)));
-
+//1.
 function range(start, end, step) {
   let array = [];
   if (step > 0 && step < end) {
@@ -577,3 +577,107 @@ function sum(array) {
 }
 console.log(range(1, -10, -1));
 console.log(sum(range(1, -10, -1)));
+//2.
+function reverseArray(array) {
+  let newArray = [];
+  for (let i = 0; i < array.length; i++) {
+    newArray.unshift(array[i]);
+  }
+  return newArray;
+}
+let newArray = ["a", "b", "c"];
+console.log(reverseArray(newArray));
+
+function reverseArrayInPlace(array) {
+  for (let i = 0; i < Math.floor(array.length / 2); i++) {
+    let old = array[i];
+    array[i] = array[array.length - 1 - i];
+    array[array.length - 1 - i] = old;
+  }
+  return array;
+}
+
+console.log(reverseArrayInPlace([1, 2, 3, 4, 5, 6, 7, 8]));
+
+//3.
+let list = { value: 1, rest: { value: 2, rest: { value: 3, rest: null } } };
+
+function arrayToList(array) {
+  let list = null;
+  for (let i = array.length - 1; i > 0; i--) {
+    list = { value: array[i], rest: list };
+  }
+  return list;
+}
+console.log(arrayToList([10, 20, 30, 40]));
+
+function listToArray(list) {
+  let array = [];
+  while (list) {
+    array.push(list.value);
+    list = list.rest;
+  }
+  return array;
+}
+
+//
+console.log(
+  listToArray({ value: 1, rest: { value: 2, rest: { value: 3, rest: null } } })
+);
+
+let array = [];
+array.push(list.value);
+array.push(list.rest.value);
+array.push(list.rest.rest.value);
+
+/*Then add a helper function prepend, which takes an element and a list and creates a new list that adds the element to the front of the input list, and nth, 
+which takes a list and a number and returns the element at the given position in the list (with zero referring to the first element) or undefined when there is no such element. */
+
+function prepend(x, list) {
+  let newList = {};
+  newList.value = x;
+  newList.rest = list;
+  return newList;
+}
+console.log(prepend(10, prepend(20, null)));
+
+function nth(list, number) {
+  let array = [];
+  array = listToArray(list);
+  return array[number];
+}
+
+console.log(nth(arrayToList([10, 20, 30]), 6));
+
+//OVDJE SAM STAO
+function deepEqual(value1, value2) {
+  if (value1 == null || value2 == null) {
+    return false;
+  }
+  if (value1 === value2) {
+    return true;
+  }
+  if (Array.isArray(value1) && Array.isArray(value2)) {
+    console.log("herro");
+    if (value1 == value2) {
+      return true;
+    }
+  }
+  if (typeof value1 == "object" && typeof value2 == "object") {
+    return deepEqual(Object.entries(value1), Object.entries(value2));
+  } else {
+    return false;
+  }
+}
+
+let obj = { here: { is: "an" }, object: 2 };
+
+console.log("Expected output: True " + "Actual output: " + deepEqual(3, 3));
+console.log("Expected output: False " + "Actual output: " + deepEqual(3, "3"));
+
+console.log("1" + deepEqual(obj, obj));
+// → true
+console.log("2" + deepEqual(obj, { here: 1, object: 2 }));
+// → false
+console.log("3" + deepEqual(obj, { here: { is: "an" }, object: 2 }));
+// → true
