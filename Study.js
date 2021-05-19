@@ -650,34 +650,72 @@ function nth(list, number) {
 console.log(nth(arrayToList([10, 20, 30]), 6));
 
 //OVDJE SAM STAO
-function deepEqual(value1, value2) {
-  if (value1 == null || value2 == null) {
+/* function deepEqual(value1, value2) {
+  if (
+    typeof value1 != "object" ||
+    value1 == null ||
+    typeof value2 != "object" ||
+    value2 == null
+  ) {
     return false;
   }
-  if (value1 === value2) {
-    return true;
+  let key1array = Object.keys(value1);
+  let key2array = Object.keys(value2);
+  if (key1array.length != key2array.length) {
+    return false;
   }
-  if (Array.isArray(value1) && Array.isArray(value2)) {
-    console.log("herro");
-    if (value1 == value2) {
-      return true;
+  for (let i = 0; i < key1array.length; i++) {
+    if (key2array.includes(key1array[i])) {
+      if (typeof value1[key1array[i]] == "object") {
+        if (!deepEqual(value1[key1array[i]], value2[key1array[i]])) {
+          return false;
+        }
+      } else {
+        if (value1[key1array[i]] === value2[key1array[i]]) {
+          continue;
+        } else {
+          return false;
+        }
+      }
     }
   }
-  if (typeof value1 == "object" && typeof value2 == "object") {
-    return deepEqual(Object.entries(value1), Object.entries(value2));
-  } else {
+  return true;
+}
+ */
+//Provjeriti jesu li oba objekt
+//provjeriti jeli imaju iste propertije
+
+//usporediti njihove vrijednosti - loop liste keyeva
+//provjeriti da li je vrijednost objekt
+//Rekurzija - jesu li objekti jednaki
+//Ako je true: Continue;
+//Ako nisu jednaki prekini loop i izbaci False
+//Ako vrijednost nije objekt usporedi vrijednosti
+//Ako true: Continue;
+//Ako nije true prekini loop return False;
+
+function deepEqual(a, b) {
+  if (a === b) return true;
+
+  if (a == null || typeof a != "object" || b == null || typeof b != "object")
     return false;
+
+  let keysA = Object.keys(a),
+    keysB = Object.keys(b);
+
+  if (keysA.length != keysB.length) return false;
+
+  for (let key of keysA) {
+    if (!keysB.includes(key) || !deepEqual(a[key], b[key])) return false;
   }
+
+  return true;
 }
 
 let obj = { here: { is: "an" }, object: 2 };
-
-console.log("Expected output: True " + "Actual output: " + deepEqual(3, 3));
-console.log("Expected output: False " + "Actual output: " + deepEqual(3, "3"));
-
-console.log("1" + deepEqual(obj, obj));
+console.log(deepEqual(obj, obj));
 // → true
-console.log("2" + deepEqual(obj, { here: 1, object: 2 }));
+console.log(deepEqual(obj, { here: 1, object: 2 }));
 // → false
-console.log("3" + deepEqual(obj, { here: { is: "an" }, object: 2 }));
+console.log(deepEqual(obj, { here: { what: "an" }, object: 2 }));
 // → true
