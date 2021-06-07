@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>WebSite</title>
+  </head>
+  <body>
+    <div id="counterContainer">
+      <h1>Counter</h1>
+      <input type="number" id="counter" value="0" disabled />
+      <input
+        type="button"
+        id="addCount"
+        value="ADD COUNT"
+        onclick="document.getElementById('counter').value = parseInt(document.getElementById('counter').value) + 1"
+      />
+      <input
+        type="button"
+        id="lowerCount"
+        value="LOWER COUNT"
+        onclick="document.getElementById('counter').value -= 1"
+      />
+    </div>
+  </body>
+</html>

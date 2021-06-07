@@ -1,0 +1,20 @@
+#calculatorBody {
+  background: linear-gradient(to top right, silver 50%, orange);
+  width: fit-content;
+  padding: 20px;
+  border: 10px double black;
+}
+#calculatorBody input {
+  height: 30px;
+  font-size: 20px;
+}
+#calculatorBody table {
+  width: 90%;
+  margin: 10px auto;
+  text-align: center;
+}
+#calculatorBody table td input {
+  font-size: 20px;
+  width: 40px;
+  height: 30px;
+}

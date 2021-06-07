@@ -1,0 +1,32 @@
+body {
+  background: linear-gradient(to top right, orange, green);
+  background-repeat: no-repeat;
+}
+#counterContainer {
+  margin: 300px auto;
+  padding: 20px;
+  width: fit-content;
+  border: 10px double white;
+  text-align: center;
+}
+#counterContainer h1 {
+  margin-top: 100px;
+  color: rgb(70, 39, 0);
+  font-size: 70px;
+}
+#counterContainer #counter {
+  margin-top: 50px;
+  font-size: 80px;
+  color: aliceblue;
+  background: unset;
+  border: unset;
+  text-align: center;
+}
+#counterContainer input {
+  margin: 50px auto;
+  padding: 20px;
+  display: block;
+  font-size: 20px;
+  background-color: silver;
+  color: rgb(70, 39, 0);
+}

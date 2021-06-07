@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      function buttonClick(clickedID) {
+        let val = document.getElementById(clickedID).value;
+        let input = document.getElementById("inputBox");
+        input.value = input.value + val;
+      }
+      function calculate() {
+        let input = document.getElementById("inputBox");
+        let calculated = eval(input.value);
+        input.value = calculated;
+      }
+      function deleteLastInput() {
+        let input = document.getElementById("inputBox");
+        if (input.value.length > 2) {
+          input.value = "";
+        }
+        input.value = input.value.substring(0, input.value.length - 1);
+      }
+    </script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Calculator</title>
+  </head>
+  <body>
+    <div id="calculatorBody">
+      <input type="text" name="inputBox" id="inputBox" value="" disabled />
+      <table>
+        <tr id="firstRow">
+          <td>
+            <input
+              type="button"
+              name="buttonNumber1"
+              id="buttonNumber1"
+              value="1"
+              onclick="buttonClick(this.id)"
+            />
+          </td>
+          <td>
+            <input
+              type="button"
+              name="buttonNumber2"
+              id="buttonNumber2"
+              value="2"
+              onclick="buttonClick(this.id)"
+            />
+          </td>
+          <td>
+            <input
+              type="button"
+              name="buttonNumber3"
+              id="buttonNumber3"
+              value="3"
+              onclick="buttonClick(this.id)"
+            />
+          </td>
+          <td>
+            <input
+              type="button"
+              name="buttonFunctionAddition"
+              id="buttonFunctionAddition"
+              value=" + "
+              onclick="buttonClick(this.id)"
+            />
+          </td>
+        </tr>
+        <tr id="secondRow">
+          <td>
+            <input
+              type="button"
+              name="buttonNumber4"
+              id="buttonNumber4"
+              value="4"
+              onclick="buttonClick(this.id)"
+            />
+          </td>
+          <td>
+            <input
+              type="button"
+              name="buttonNumber5"
+              id="buttonNumber5"
+              value="5"
+              onclick="buttonClick(this.id)"
+            />
+          </td>
+          <td>
+            <input
+              type="button"
+              name="buttonNumber6"
+              id="buttonNumber6"
+              value="6"
+              onclick="buttonClick(this.id)"
+            />
+          </td>
+          <td>
+            <input
+              type="button"
+              name="buttonFunctionSubtraction"
+              id="buttonFunctionSubtraction"
+              value=" - "
+              onclick="buttonClick(this.id)"
+            />
+          </td>
+        </tr>
+        <tr id="thirdRow">
+          <td>
+            <input
+              type="button"
+              name="buttonNumber7"
+              id="buttonNumber7"
+              value="7"
+              onclick="buttonClick(this.id)"
+            />
+          </td>
+          <td>
+            <input
+              type="button"
+              name="buttonNumber8"
+              id="buttonNumber8"
+              value="8"
+              onclick="buttonClick(this.id)"
+            />
+          </td>
+          <td>
+            <input
+              type="button"
+              name="buttonNumber9"
+              id="buttonNumber9"
+              value="9"
+              onclick="buttonClick(this.id)"
+            />
+          </td>
+          <td>
+            <input
+              type="button"
+              name="buttonFunctionMultiplication"
+              id="buttonFunctionMultiplication"
+              value=" * "
+              onclick="buttonClick(this.id)"
+            />
+          </td>
+        </tr>
+        <tr id="fourthRow">
+          <td>
+            <input
+              type="button"
+              name="buttonReset"
+              id="buttonReset"
+              value="C"
+              onclick="deleteLastInput()"
+            />
+          </td>
+          <td>
+            <input
+              type="button"
+              name="buttonNumber0"
+              id="buttonNumber0"
+              value="0"
+              onclick="buttonClick(this.id)"
+            />
+          </td>
+          <td>
+            <input
+              type="button"
+              name="buttonFunctionCalculate"
+              id="buttonFunctionCalculate"
+              value="="
+              onclick="calculate()"
+            />
+          </td>
+          <td>
+            <input
+              type="button"
+              name="buttonFunctionDivision"
+              id="buttonFunctionDivision"
+              value=" / "
+              onclick="buttonClick(this.id)"
+            />
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
